@@ -38,53 +38,53 @@ const GroupedBarChart = () => {
     // console.log(ItemsByLocation)
 
     const hoverColors = [
-        'rgba(70, 24, 115, 1)',
-        'rgba(88, 20, 142, 1)',
-        'rgba(105, 16, 168, 1)',
-        'rgba(140, 7, 221, 1)',
-        'rgba(159, 33, 227, 1)',
-        'rgba(179, 51, 233, 1)',
-        'rgba(220, 147, 246, 1)',
-        'rgba(234, 191, 250, 1)',
+        'rgba(54, 5, 104, 1)',
+        'rgba(91, 42, 134, 1)',
+        'rgba(209, 64, 129, 1)',
+        'rgba(239, 121, 138, 1)',
+        'rgba(255, 144, 179, 1)',
+        'rgba(241, 133, 133, 1)'
     ];
 
     const colors = [
-        'rgba(70, 24, 115, 0.7)',
-        'rgba(88, 20, 142, 0.7)',
-        'rgba(105, 16, 168, 0.7)',
-        'rgba(140, 7, 221, 0.7)',
-        'rgba(159, 33, 227, 0.7)',
-        'rgba(179, 51, 233, 0.7)',
-        'rgba(220, 147, 246, 0.7)',
-        'rgba(234, 191, 250, 0.7)',
+        'rgba(54, 5, 104, 0.7)',
+        'rgba(91, 42, 134, 0.7)',
+        'rgba(209, 64, 129, 0.7)',
+        'rgba(239, 121, 138, 0.7)',
+        'rgba(255, 144, 179, 0.7)',
+        'rgba(241, 133, 133, 0.7)'
     ]
 
     const datasets = Object.keys(ItemsByLocation).map((location, index) => {
         const itemCounts = ItemsByLocation[location];
+        const itemNames = Object.keys(itemCounts);
+        const itemCountsArray = Object.values(itemCounts);
         return {
             label: location,
-            data: Object.values(itemCounts),
+            data: itemCountsArray,
             backgroundColor: colors[index],
             hoverBackgroundColor: hoverColors[index],
         };
     });
 
+    const itemNames = Object.values(ItemsByLocation).flatMap((counts) => Object.keys(counts))
 
+    const uniqueItemNames = Array.from(new Set(itemNames)).sort()
     const data = {
-        labels: Object.keys(ItemsByLocation),
+        labels: uniqueItemNames,
         datasets: datasets,
     };
 
     const options: ChartOptions<'bar'> = {
         scales: {
             y: { beginAtZero: true, title: { display: true, text: 'Sales' } },
-            x: { title: { display: true, text: fieldName } }
+            x: { title: { display: true, text: 'Item' } }
         }
     };
 
     return (
-        <div className=" w-full h-auto md:h-[600px] p-10 bg-gray-200 rounded-lg hover:shadow-lg">
-            Grouped Bar Chart
+        <div className=" w-full h-auto min-h-[300px] md:h-[600px] p-10 bg-gray-200 rounded-lg hover:shadow-lg">
+            Grouped Bar Chart: Item wise sales across different stores
             <Bar data={data} options={options} />
         </div>
     )
