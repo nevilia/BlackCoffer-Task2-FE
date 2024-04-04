@@ -40,10 +40,12 @@ const BarChart = () => {
     const data = {
         labels: uniqueXValues,
         datasets: [{
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            hoverBackgroundColor: 'rgba(255, 99, 132, 1)',
             label: "Total Sales ($) by Store Location ",
             data: Object.values(totalPriceByLocation),
             borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
         }]
     }
 
