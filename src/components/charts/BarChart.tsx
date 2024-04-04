@@ -21,7 +21,7 @@ const BarChart = () => {
     const filteredData = chartData.filter((data: any) => data[fieldName]);
 
     const uniqueXValues = Array.from(new Set(filteredData.map((data: any) => data[fieldName])));
-    console.log(uniqueXValues)
+    // console.log(uniqueXValues)
     // Calculate total price for each store location
     const totalPriceByLocation: { [key: string]: number } = {};
 
@@ -35,10 +35,10 @@ const BarChart = () => {
         });
     });
 
-    console.log(totalPriceByLocation);
+    // console.log(totalPriceByLocation);
 
     const data = {
-        labels: Object.keys(totalPriceByLocation),
+        labels: uniqueXValues,
         datasets: [{
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             label: "Total Sales ($) by Store Location ",
@@ -55,9 +55,9 @@ const BarChart = () => {
     };
 
     return (
-        <div>
+        <>
             <Bar data={data} options={options}></Bar>
-        </div>
+        </>
     )
 }
 
