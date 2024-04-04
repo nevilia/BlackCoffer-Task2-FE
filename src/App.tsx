@@ -1,4 +1,5 @@
 import './App.css'
+import 'chart.js/auto'
 import Main from './components/Main'
 import Navbar from './components/Navbar'
 
@@ -8,8 +9,6 @@ function App() {
     <div className=''>
       <Navbar />
       <div className="p-4">
-        <Main />
-        <Main />
         <Main />
       </div>
     </div>
