@@ -1,6 +1,7 @@
 import BarChart from "./charts/BarChart"
 import DoughnutChart from "./charts/DoughnutChart"
 import GroupedBarChart from "./charts/GroupedBarChart"
+import PieChart from "./charts/PieChart"
 
 const Main = () => {
   return (
@@ -8,6 +9,7 @@ const Main = () => {
         <BarChart/>
         <DoughnutChart/>
         <GroupedBarChart/>
+        <PieChart/>
         
     </div>
   )

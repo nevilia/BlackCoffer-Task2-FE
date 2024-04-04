@@ -16,7 +16,7 @@ const DoughnutChart = () => {
         fetchChartData()
     }, [])
 
-    console.log(chartData)
+    // console.log(chartData)
 
     const tagCounts: { [key: string]: number } = {};
     chartData.forEach((data: any) => {
@@ -30,7 +30,7 @@ const DoughnutChart = () => {
         })
     })
 
-    console.log(tagCounts)
+    // console.log(tagCounts)
 
     const data = {
         labels: Object.keys(tagCounts),
